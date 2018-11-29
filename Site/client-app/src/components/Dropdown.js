@@ -17,7 +17,7 @@ export default class Dropdown extends React.Component {
   // }
   render() {
     return (
-      <Input type='select' value={this.props.selected} onChange={this.handleChange}>
+      <Input type='select' size={this.props.size} value={this.props.selected} onChange={this.handleChange}>
         {this.props.list.map((item) => <option key={item} value={item}>{item}</option>)}
       </Input>
     );

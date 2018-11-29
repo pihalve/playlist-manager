@@ -8,31 +8,33 @@ export default class RuleList extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {rules: [
-    {id: 0, field: 'Year', operator: 'is', value: '2018'},
-    {id: 1, field: 'Artist', operator: 'starts with', value: ''},
-    {id: 2, field: 'Comments', operator: 'contains', value: ''}]};
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
   handleChange(event) {
-    //console.log('RuleList says: ' + event.field + '|' + event.operator + '|' + event.value);
-    console.log('Rulelist says: ' + event.ruleId + ':' + event.name + '=' + event.value);
-    const rules = this.state.rules;
-    rules[event.ruleId][event.name] = event.value;
-    //this.setState({[event.name]: event.value});
-    this.setState({rules: rules});
-    console.log('Rulelist->Rule[' + event.ruleId + ']: ' + rules[event.ruleId].field + '|' + rules[event.ruleId].operator + '|' + rules[event.ruleId].value);
-    //this.props.onChange({value: event.value});
+    this.props.onChange(event);
+  }
+  handleAdd(event) {
+    this.props.onClickAdd(event);
+  }
+  handleRemove(event, ruleId) {
+    this.props.onClickRemove(event, ruleId);
   }
   render () {
     return (
       <FormGroup>
-          {this.state.rules.map((rule) => 
-          <div key={rule.id}>
-              <Rule key={rule.id} fields={this.props.fields} operators={this.props.operators} rule={rule} onChange={this.handleChange} />
-              <span>{this.state.rules[rule.id].field}</span>
-          </div>,
+        {this.props.rules.map((rule) => 
+          <Rule 
+            size={this.props.size} 
+            key={rule.id} 
+            fields={this.props.fields} 
+            operators={this.props.operators} 
+            rule={rule} 
+            onChange={this.handleChange}
+            onClickAdd={this.handleAdd}
+            onClickRemove={this.handleRemove} />,
           this
-          )}
+        )}
       </FormGroup>
     );
   }

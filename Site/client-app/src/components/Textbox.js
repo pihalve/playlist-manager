@@ -20,9 +20,8 @@ export default class Textbox extends React.Component {
     return (
       <FormGroup>
         {this.hasLabel() && <Label for={this.props.id}>{this.props.label}</Label>}
-        <Input type='text' id={this.props.id} defaultValue={this.props.value} placeholder={this.props.placeholder} onChange={this.handleChange} />
+        <Input type='text' size={this.props.size} id={this.props.id} defaultValue={this.props.value} placeholder={this.props.placeholder} onChange={this.handleChange} />
       </FormGroup>
     );
   }
 }
-
