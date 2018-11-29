@@ -58,6 +58,10 @@ I used the following series of commands (probably new versions exist when you re
     npm install jquery@3.3.1
 	npm install reactstrap bootstrap@4
 
+Additionally, I added Open Iconic icon pack (https://useiconic.com/open/):
+
+    npm install open-iconic
+
 ## ReatcJS scrathpad
 
 <a
